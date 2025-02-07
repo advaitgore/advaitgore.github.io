@@ -1,1 +1,0 @@
-# advaitgore.github.io
