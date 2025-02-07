@@ -54,20 +54,27 @@
 
         .heart {
             position: absolute;
-            font-size: 20px;
+            font-size: 100px; /* 5x bigger hearts */
             color: #ff4d4d;
             opacity: 0.6;
             animation: float 6s ease-in-out infinite;
+            bottom: 25%; /* Start position from bottom */
         }
 
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
+            0% { 
+                transform: translateY(0) rotate(0deg);
+                bottom: 25%;
+            }
+            100% { 
+                transform: translateY(-100vh) rotate(360deg);
+                bottom: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <img src="/cartoon.jpg" alt="Teddy Bear" class="teddy">
+    <img src="./cartoon.jpg" alt="Teddy Bear" class="teddy">
     <h1>Will you be my Valentine?</h1>
     <div class="button-container">
         <button class="button yes-btn">Yes</button>
@@ -82,6 +89,7 @@
                 heart.className = 'heart';
                 heart.innerHTML = '♥';
                 heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '25%';
                 heart.style.color = colors[Math.floor(Math.random() * colors.length)];
                 document.body.appendChild(heart);
                 
