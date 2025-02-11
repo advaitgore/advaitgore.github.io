@@ -28,11 +28,53 @@
             margin: 20px 0;
             font-weight: bold;
         }
+
+        .heart {
+            position: absolute;
+            font-size: 100px;
+            color: #ff4d4d;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            bottom: 25%;
+        }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(0) rotate(0deg);
+                bottom: 25%;
+            }
+            100% { 
+                transform: translateY(-100vh) rotate(360deg);
+                bottom: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <img src="./based.jpg" alt="Based" class="success-image">
-    <h1>Looks like you made the based choice</h1>
+    <h1>Looks like you made the based choice :)</h1>
     <h2>See you Friday :)</h2>
+
+    <script>
+        function createHearts() {
+            const colors = ['#ff4d4d', '#ff6b6b', '#ff8080'];
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '♥';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '25%';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 300);
+        }
+
+        createHearts();
+    </script>
 </body>
 </html>
+
