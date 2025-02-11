@@ -31,6 +31,7 @@
         .button-container {
             display: flex;
             gap: 20px;
+            position: relative;
         }
 
         .button {
@@ -50,6 +51,8 @@
         .no-btn {
             background-color: #e74c3c;
             color: white;
+            position: absolute;
+            transition: all 0.5s ease;
         }
 
         .heart {
@@ -78,7 +81,7 @@
     <h1>Will you be my Valentine Aditi?</h1>
     <div class="button-container">
         <button class="button yes-btn" onclick="window.location.href='success.html'">Yes</button>
-        <button class="button no-btn" onmouseover="this.style.visibility='hidden'" onmouseout="this.style.visibility='visible'">No</button>
+        <button class="button no-btn" onmouseover="moveButton(this)">No</button>
     </div>
 
     <script>
@@ -99,7 +102,38 @@
             }, 300);
         }
 
+        function moveButton(button) {
+            const maxX = window.innerWidth - button.offsetWidth;
+            const maxY = window.innerHeight - button.offsetHeight;
+            button.style.left = Math.random() * maxX + 'px';
+            button.style.top = Math.random() * maxY + 'px';
+        }
+
+        function bounceButton() {
+            const button = document.querySelector('.no-btn');
+            let x = Math.random() * (window.innerWidth - button.offsetWidth);
+            let y = Math.random() * (window.innerHeight - button.offsetHeight);
+            let dx = 2;
+            let dy = 2;
+
+            function animate() {
+                x += dx;
+                y += dy;
+
+                if (x <= 0 || x >= window.innerWidth - button.offsetWidth) dx = -dx;
+                if (y <= 0 || y >= window.innerHeight - button.offsetHeight) dy = -dy;
+
+                button.style.left = x + 'px';
+                button.style.top = y + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
         createHearts();
+        bounceButton();
     </script>
 </body>
 </html>
