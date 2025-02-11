@@ -54,11 +54,11 @@
 
         .heart {
             position: absolute;
-            font-size: 100px; /* 5x bigger hearts */
+            font-size: 100px;
             color: #ff4d4d;
             opacity: 0.6;
             animation: float 6s ease-in-out infinite;
-            bottom: 25%; /* Start position from bottom */
+            bottom: 25%;
         }
 
         @keyframes float {
@@ -71,14 +71,19 @@
                 bottom: 100%;
             }
         }
+
+        .success-image {
+            width: 300px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <img src="./cartoon.jpg" alt="Teddy Bear" class="teddy">
-    <h1>Will you be my Valentine?</h1>
+    <h1>Will you be my Valentine AditiS?</h1>
     <div class="button-container">
-        <button class="button yes-btn">Yes</button>
-        <button class="button no-btn" onmouseover="this.style.display='none'">No</button>
+        <button class="button yes-btn" onclick="window.location.href='success.html'">Yes</button>
+        <button class="button no-btn" onmouseover="this.style.visibility='hidden'" onmouseout="this.style.visibility='visible'">No</button>
     </div>
 
     <script>
